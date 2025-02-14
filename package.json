@@ -1,0 +1,18 @@
+{
+  "name": "protocol-grist-adapter",
+  "version": "1.0.0",
+  "main": "src/server.ts",
+  "repository": "https://github.com/Servant-Cities/protocol-grist-adapter",
+  "license": "MIT",
+  "scripts": {
+    "start": "ts-node-dev --respawn --transpile-only --quiet src/server.ts"
+  },
+  "dependencies": {
+    "fastify": "^5.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.4",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.7.3"
+  }
+}
