@@ -1,4 +1,5 @@
 const preview = {
+  url: 'http://localhost:5173',
   pathsMap: {
     "/api/*": "/api/"
   },
@@ -12,7 +13,7 @@ const widgetAdapter = () => {
       iframe.contentWindow.postMessage(
         {
           type: "REQUEST_PREVIEW_SDK",
-          preview,
+          preview: JSON.stringify(preview),
           secret: "",
         },
         new URL(preview.url).origin
