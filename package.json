@@ -5,7 +5,7 @@
   "repository": "https://github.com/Servant-Cities/protocol-grist-adapter",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node-dev --respawn --transpile-only --quiet src/server.ts"
+    "start": "ts-node-dev --respawn --transpile-only --quiet --env-file=.env src/server.ts"
   },
   "dependencies": {
     "@fastify/cors": "^10.0.2",
