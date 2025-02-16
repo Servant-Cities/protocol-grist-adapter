@@ -14,7 +14,7 @@ export const formatConnection = gristConnection => {
 
 export const getConnection = async (request, reply) => {
   const response = await fetch(
-    `https://docs.getgrist.com/api/docs/${DOCUMENT_ID}/tables/Connections/records?filter={"uri": ["${encodeURIComponent(request.params.uri)}"]}&limit=1`,
+    `https://docs.getgrist.com/api/docs/${DOCUMENT_ID}/tables/Connections/records?filter={"uri": ["${request.protocol}://${request.host}${request.url}"]}&limit=1`,
     {
       headers: {
         Authorization: `Bearer ${API_KEY}`,
@@ -24,7 +24,7 @@ export const getConnection = async (request, reply) => {
 
   const data = await response.json();
 
-  return data.records[0];
+  return formatConnection(data.records[0]);
 };
 
 export const getConnections = async (request, reply) => {

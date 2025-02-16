@@ -9,13 +9,13 @@ async function api(fastify, options) {
     origin: "*",
   });
 
-  fastify.get("/api/scenarios/:uri", getScenario);
+  fastify.get("/api/scenarios/:row", getScenario);
   fastify.get("/api/scenarios", getScenarios);
-  fastify.get("/api/connections/:uri", getConnection);
+  fastify.get("/api/connections/:row", getConnection);
   fastify.get("/api/connections", getConnections);
-  fastify.get("/api/activities/:uri", getActivity);
+  fastify.get("/api/activities/:row", getActivity);
   fastify.get("/api/activities", getActivities);
-  fastify.get("/api/triggers/:uri", getTrigger);
+  fastify.get("/api/triggers/:row", getTrigger);
   fastify.get("/api/triggers", getTriggers);
 }
 

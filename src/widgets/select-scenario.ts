@@ -1,8 +1,10 @@
+const { IFRAME_ORIGIN } = process.env;
+
 const preview = {
-  url: 'http://localhost:5173',
+  url: IFRAME_ORIGIN,
   pathsMap: {
-    "/api/*": "/api/"
-  },
+    "/api/*": "/api/",
+  }
 };
 
 const widgetAdapter = () => {
@@ -29,14 +31,14 @@ const widgetAdapter = () => {
 
   grist.ready();
   grist.onRecord(function (record) {
-    console.log({ record });
-    iframe.src = record.uri;
+    const gristURI = new URL(record.uri);
+    iframe.src = `${IFRAME_ORIGIN}${gristURI.pathname.replace("/api", "")}`;
   });
 };
 
 const selectScenario = async (request, reply) => {
   try {
-    const functionCode = widgetAdapter.toString();
+    const adapterCode = widgetAdapter.toString();
     reply.type("text/html").send(`<html
       <head>
         <script src="https://docs.getgrist.com/grist-plugin-api.js"></script>
@@ -44,8 +46,9 @@ const selectScenario = async (request, reply) => {
       <body>
         <iframe id="preview" src="" width="100%" height="100%"></iframe>
         <script>
+          const IFRAME_ORIGIN = "${IFRAME_ORIGIN}"
           const preview = ${JSON.stringify(preview)}
-          const adapt = ${functionCode};
+          const adapt = ${adapterCode};
           adapt();
         </script>
       </body>
