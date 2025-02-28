@@ -11,6 +11,11 @@ Also let you test your workflow apps in preview mode trough widgets. (only the f
 
 First, you need to create a Grist document using [this template](https://docs.getgrist.com/cVrWhcVBTPrp/Servant-cities-protocol-widget-template?utm_id=share-doc) 
 
+Make sure you use the right version of nodejs, only 20+ supports .env injection as implemented here.
+```
+nvm use 20
+```
+
 Then install the dependences
 
 ```
@@ -24,7 +29,7 @@ You need to fill the document ID and your personnal API key in the .env file.
 Then run the service.
 
 ```
-yarn start
+yarn dev
 ```
 
 This will let you use our protocol's API with Grist data.
